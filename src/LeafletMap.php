@@ -109,12 +109,14 @@ class LeafletMap extends TElement
         ";
     }
 
-    public function tileLayer($tile = 'google')
+    public function tileLayer($tile = 'google',$att="")
     {
         if($tile == 'google')
             $this->javascript .= "L.tileLayer('https://www.google.com/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {  attribution: 'André | Google' }).addTo(map);";
         elseif($tile == 'osm')
             $this->javascript .= "L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; André | OSM' }).addTo(map);";
+        else
+            $this->javascript .= "L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; ".$att." | OSM' }).addTo(map);";
     }
 
     public function enableAddPoints($return)
